@@ -63,6 +63,7 @@ namespace SnakeOOP
             {
                 food.symb = head.symb;
                 pointList.Add(food);
+                Console.ForegroundColor = ConsoleColor.Green;
                 return true;
             }
             else
@@ -70,6 +71,7 @@ namespace SnakeOOP
                 return false;
             }
         }
+
 
         public bool IsHitTail()
         {
@@ -83,5 +85,6 @@ namespace SnakeOOP
             }
             return false;
         }
+        
     }
 }

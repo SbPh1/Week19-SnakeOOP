@@ -28,6 +28,14 @@ namespace SnakeOOP
             Point food = foodGenerator.GenerateFood();
             food.Draw();
 
+            FoodGenerator badFoodGenerator = new FoodGenerator(80, 25, '@');
+            Point badFood = badFoodGenerator.GenerateBadFood();
+            badFood.Draw();
+
+            FoodGenerator freezeFoodGenerator = new FoodGenerator(80, 25, '!');
+            Point freezeFood = freezeFoodGenerator.GenerateFreezeFood();
+            freezeFood.Draw();
+
             while (true)
             {
                 if (walls.IsHit(snake) || snake.IsHitTail())
@@ -37,8 +45,23 @@ namespace SnakeOOP
                 if (snake.Eat(food))
                 {
                     food = foodGenerator.GenerateFood();
+                    Console.ForegroundColor = ConsoleColor.Green;
                     food.Draw();
                     score++;
+                }
+                if (snake.Eat(badFood))
+                {
+                    badFood = badFoodGenerator.GenerateBadFood();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    badFood.Draw();
+                    score--;
+                }
+                if (snake.Eat(freezeFood))
+                {
+                    freezeFood = freezeFoodGenerator.GenerateFreezeFood();
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    freezeFood.Draw();
+                    Thread.Sleep(2500);
                 }
                 else
                 {
